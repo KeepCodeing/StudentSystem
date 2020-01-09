@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.studentdemo.ssystem.DAO.StudentDAO">
+    <sql id="update_info">
+--      trim 标签用来去掉最后一个,
+        <trim suffixOverrides=",">
+            <if test="name != '' and name != null">name = #{name},</if>
+            <if test="age != 0 and age != null">age = #{age},</if>
+            <if test="gender != 0 and gender != null">gender = #{gender},</if>
+            <if test="address != '' and address != null">address = #{address},</if>
+            <if test="phone != '' and phone != null">phone = #{phone},</if>
+            <if test="qq != '' and qq != null">qq = #{qq},</if>
+            <if test="grade != 0 and grade != null">grade = #{grade},</if>
+        </trim>
+    </sql>
+    <select id="getStudentInfoById" resultType="com.studentdemo.ssystem.POJO.StudentInfoPOJO" parameterType="Long">
+        SELECT * FROM student_info where id = #{id}
+    </select>
+    <insert id="addStudentInfo" parameterType="com.studentdemo.ssystem.POJO.StudentInfoPOJO">
+        INSERT INTO student_info
+        VALUES (null, #{name}, #{age}, #{gender}, #{address}, #{phone}, #{qq}, #{grade})
+    </insert>
+    <update id="updateStudentInfo" parameterType="com.studentdemo.ssystem.POJO.StudentInfoPOJO">
+        UPDATE student_info SET
+        <include refid="update_info" />
+        WHERE id = #{id}
+    </update>
+    <delete id="delStudentInfo" parameterType="Long">
+        DELETE FROM student_info WHERE id = #{id}
+    </delete>
+</mapper>

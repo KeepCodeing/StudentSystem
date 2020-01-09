@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: 114514
+    url: jdbc:mysql:///ssmtest?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:Mapper/*.xml
+  type-aliases-package: com.studentdemo.ssystem.POJO
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+swagger:
+  title: 学生管理系统
+  description: 迫真项目，练手用
+  version: 1.14 version
+  license: Apache License, Version 2.0
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  terms-of-service-url: https://github.com/dyc87112/spring-boot-starter-swagger
+  contact:
+    name: hwz
+    url: naidesu
+    email: it is secret
+  base-package: com.studentdemo.ssystem
+  base-path: /**
