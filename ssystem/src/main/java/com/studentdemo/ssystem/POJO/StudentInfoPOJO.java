@@ -3,6 +3,8 @@ package com.studentdemo.ssystem.POJO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @ApiModel(description = "学生信息实体类")
@@ -27,7 +29,10 @@ public class StudentInfoPOJO {
 
     @ApiModelProperty("学生QQ号码")
     private String qq;
-
+    
     @ApiModelProperty("学生年级")
     private Integer grade;
+
+    @ApiModelProperty("学生班级")
+    private String classname;
 }

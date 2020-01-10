@@ -1,0 +1,24 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.studentdemo.ssystem.DAO.CourseSeleDAO">
+    <resultMap id="CourseSelectMap" type="com.studentdemo.ssystem.POJO.CourseSelePOJO">
+        <result property="id" column="student_id" />
+    </resultMap>
+    <select id="getMustSeleList" resultType="com.studentdemo.ssystem.POJO.CourseInfoPOJO" parameterType="Integer">
+        SELECT * FROM course_info WHERE year = #{grade} and must = 1
+    </select>
+    <insert id="addMustSele" parameterType="com.studentdemo.ssystem.POJO.CourseSelePOJO">
+        INSERT INTO course_selection VALUES (#{id}, #{course_info})
+    </insert>
+    <delete id="delStudentSeleAll" parameterType="Long">
+        DELETE FROM course_selection WHERE student_id = #{id}
+    </delete>
+    <select id="getOtherSeleList" parameterType="Integer" resultType="com.studentdemo.ssystem.POJO.CourseInfoPOJO">
+        SELECT * FROM course_info WHERE year = #{grade} and must = 0
+    </select>
+    <update id="addOtherSele" parameterType="com.studentdemo.ssystem.POJO.CourseSelePOJO">
+        UPDATE  course_selection SET course_info = #{course_info} WHERE student_id = #{id}
+    </update>
+    <select id="getStudentSele" resultMap="CourseSelectMap" parameterType="Long">
+        SELECT * FROM course_selection WHERE student_id = #{id}
+    </select>
+</mapper>

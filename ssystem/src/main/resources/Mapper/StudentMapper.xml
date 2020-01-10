@@ -10,6 +10,7 @@
             <if test="phone != '' and phone != null">phone = #{phone},</if>
             <if test="qq != '' and qq != null">qq = #{qq},</if>
             <if test="grade != 0 and grade != null">grade = #{grade},</if>
+            <if test="classname != '' and classname != null">classname = #{classname},</if>
         </trim>
     </sql>
     <select id="getStudentInfoById" resultType="com.studentdemo.ssystem.POJO.StudentInfoPOJO" parameterType="Long">
@@ -17,7 +18,7 @@
     </select>
     <insert id="addStudentInfo" parameterType="com.studentdemo.ssystem.POJO.StudentInfoPOJO">
         INSERT INTO student_info
-        VALUES (null, #{name}, #{age}, #{gender}, #{address}, #{phone}, #{qq}, #{grade})
+        VALUES (null, #{name}, #{age}, #{gender}, #{address}, #{phone}, #{qq}, #{grade}, #{classname})
     </insert>
     <update id="updateStudentInfo" parameterType="com.studentdemo.ssystem.POJO.StudentInfoPOJO">
         UPDATE student_info SET

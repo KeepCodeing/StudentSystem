@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.studentdemo.ssystem.DAO.CourseDAO">
+    <sql id="updateInfo" >
+        <trim suffixOverrides=",">
+            <if test="course_name != '' and course_name != null">course_name = #{course_name},</if>
+            <if test="must != 0 and must != null">must = #{must},</if>
+            <if test="time != '' and time != null">time = #{time},</if>
+            <if test="judge != '' and judge != null">judge = #{judge},</if>
+            <if test="year != 0 and year != null">year = #{year},</if>
+            <if test="score != 0 and score != null">score = #{score},</if>
+            <if test="college != '' and college != null">college = #{college},</if>
+        </trim>
+    </sql>
+    <select id="selectCourseById" parameterType="Integer" resultType="com.studentdemo.ssystem.POJO.CourseInfoPOJO">
+        SELECT * FROM course_info WHERE id = #{id}
+    </select>
+    <update id="updateCourseById" parameterType="com.studentdemo.ssystem.POJO.CourseInfoPOJO">
+        UPDATE course_info SET
+        <include refid="updateInfo" />
+        WHERE id = #{id}
+    </update>
+    <delete id="delCourseById" parameterType="Integer">
+        DELETE FROM course_info WHERE id = #{id}
+    </delete>
+    <insert id="addCourse" parameterType="com.studentdemo.ssystem.POJO.CourseInfoPOJO">
+        insert into course_info VALUES (null, #{course_name}, #{must}, #{time}, #{judge}, #{year}, #{socre}, #{college})
+    </insert>
+</mapper>
