@@ -23,6 +23,6 @@
         DELETE FROM course_info WHERE id = #{id}
     </delete>
     <insert id="addCourse" parameterType="com.studentdemo.ssystem.POJO.CourseInfoPOJO">
-        insert into course_info VALUES (null, #{course_name}, #{must}, #{time}, #{judge}, #{year}, #{socre}, #{college})
+        insert into course_info VALUES (null, #{course_name}, #{must}, #{time}, #{judge}, #{year}, #{study_score}, #{college})
     </insert>
 </mapper>

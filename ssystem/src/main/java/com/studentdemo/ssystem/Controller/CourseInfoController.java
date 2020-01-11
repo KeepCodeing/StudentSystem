@@ -1,6 +1,7 @@
 package com.studentdemo.ssystem.Controller;
 
 import com.studentdemo.ssystem.POJO.CourseInfoPOJO;
+import com.studentdemo.ssystem.POJO.CourseInfoPOJOEx;
 import com.studentdemo.ssystem.Serivce.ICourseInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -8,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -43,5 +45,11 @@ public class CourseInfoController {
     @PostMapping("/updateCourseInfo")
     public void updateCourseInfo(@RequestBody CourseInfoPOJO courseInfoPOJO) {
         courseInfo.updateCourseById(courseInfoPOJO);
+    }
+
+    @ApiOperation(value = "通过学生id获取课程信息及成绩", notes = "通过学生id获取数据")
+    @GetMapping("/getStudentScore/{id}")
+    public List<CourseInfoPOJOEx> getStudentScore(@PathVariable Long id) {
+        return courseInfo.getStudentScore(id);
     }
 }

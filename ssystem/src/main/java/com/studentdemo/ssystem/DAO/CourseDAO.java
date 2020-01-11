@@ -3,6 +3,8 @@ package com.studentdemo.ssystem.DAO;
 import com.studentdemo.ssystem.POJO.CourseInfoPOJO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository(value = "CourseDAO")
 public interface CourseDAO {
     CourseInfoPOJO selectCourseById(Integer id);

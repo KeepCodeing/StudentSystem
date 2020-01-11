@@ -27,8 +27,8 @@ public class CourseInfoPOJO {
     @ApiModelProperty("学年")
     private Integer year;
 
-    @ApiModelProperty("得分")
-    private Float score;
+    @ApiModelProperty("学分")
+    private Float study_score;
 
     @ApiModelProperty("开课学院")
     private String college;
