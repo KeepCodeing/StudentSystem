@@ -1,5 +1,6 @@
 package com.studentdemo.ssystem.Controller;
 
+import com.studentdemo.ssystem.POJO.CourseIdListPOJO;
 import com.studentdemo.ssystem.POJO.CourseInfoPOJO;
 import com.studentdemo.ssystem.POJO.CourseSeleListPOJO;
 import com.studentdemo.ssystem.POJO.CourseSelePOJO;
@@ -42,5 +43,11 @@ public class CourseSeleController {
     @PostMapping("/getMustSeleList/{grade}")
     public List<CourseInfoPOJO> getMustSeleList(@PathVariable Integer grade) {
         return iCourseSelect.getMustSeleList(grade);
+    }
+
+    @ApiOperation(value = "删除学生选课")
+    @PostMapping("/delCourses")
+    public void delCourses(@RequestBody CourseIdListPOJO courseIdList) {
+        iCourseSelect.updateSelection(courseIdList);
     }
 }

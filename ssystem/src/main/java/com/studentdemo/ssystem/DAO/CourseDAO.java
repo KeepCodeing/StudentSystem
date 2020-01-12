@@ -1,6 +1,7 @@
 package com.studentdemo.ssystem.DAO;
 
 import com.studentdemo.ssystem.POJO.CourseInfoPOJO;
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

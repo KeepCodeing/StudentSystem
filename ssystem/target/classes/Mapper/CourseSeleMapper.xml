@@ -21,4 +21,7 @@
     <select id="getStudentSele" resultMap="CourseSelectMap" parameterType="Long">
         SELECT * FROM course_selection WHERE student_id = #{id}
     </select>
+    <update id="updateSelection" parameterType="com.studentdemo.ssystem.POJO.CourseSelePOJO">
+        UPDATE course_selection SET course_info = #{course_info} WHERE student_id = #{id}
+    </update>
 </mapper>

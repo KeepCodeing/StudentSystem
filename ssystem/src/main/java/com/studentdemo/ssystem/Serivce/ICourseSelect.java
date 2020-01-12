@@ -1,5 +1,6 @@
 package com.studentdemo.ssystem.Serivce;
 
+import com.studentdemo.ssystem.POJO.CourseIdListPOJO;
 import com.studentdemo.ssystem.POJO.CourseInfoPOJO;
 import com.studentdemo.ssystem.POJO.CourseSeleListPOJO;
 import com.studentdemo.ssystem.POJO.CourseSelePOJO;
@@ -19,4 +20,7 @@ public interface ICourseSelect {
 
     // 添加选修课
     void addOtherSele(CourseSeleListPOJO courseSeleListPOJO);
+
+    // 更新选课列表
+    void updateSelection(CourseIdListPOJO courseIdList);
 }

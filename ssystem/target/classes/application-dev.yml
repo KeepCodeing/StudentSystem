@@ -7,6 +7,10 @@ spring:
     password: 114514
     url: jdbc:mysql:///ssmtest?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    user:
+      name: hwz
+      password: 114514
 
 mybatis:
   mapper-locations: classpath:Mapper/*.xml

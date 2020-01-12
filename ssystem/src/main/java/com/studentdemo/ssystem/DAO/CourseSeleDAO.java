@@ -26,4 +26,6 @@ public interface CourseSeleDAO {
     // 添加非必修课
     void addOtherSele(CourseSelePOJO courseSelePOJO);
 
+    // 更新选课列表，主要用于删除某些选课后更新选课列表
+    void updateSelection(CourseSelePOJO courseSelePOJO);
 }
