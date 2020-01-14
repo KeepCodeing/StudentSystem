@@ -3,6 +3,7 @@ package com.studentdemo.ssystem;
 import com.studentdemo.ssystem.POJO.CourseIdListPOJO;
 import com.studentdemo.ssystem.POJO.CourseSelePOJO;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +13,12 @@ import java.util.stream.Stream;
 public class strtest {
     @Test
     public void t() {
-        String str = "1";
-        System.out.println(Integer.valueOf(str));
-        Integer integer = Integer.valueOf(str);
+        //String str = "1";
+//        System.out.println(Integer.valueOf(str));
+//        Integer integer = Integer.valueOf(str);
+        String role = "ADMIN";
+        String[] split = role.split("/");
+        Arrays.stream(split).forEach(str -> System.out.println(str+"111"));
 //
 //        System.out.println(integer + 1);
 //        String string = "1-*/2-*/3-*/4-*/5-*/6-*/7-*/1-*/2-*/3-*/0-*/";
@@ -47,5 +51,10 @@ public class strtest {
             }
         }
         Arrays.stream(seleCourseInfoSplited).forEach((s) -> System.out.println(s));
+    }
+    @Test
+    public void t3() {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.matches(encoder.encode("admin"), "admin"));
     }
 }

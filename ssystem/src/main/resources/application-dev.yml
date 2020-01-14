@@ -1,5 +1,9 @@
 server:
   port: 8080
+  # 设置session过期时间
+  servlet:
+    session:
+      timeout: 3600s
 
 spring:
   datasource:
@@ -11,6 +15,10 @@ spring:
     user:
       name: hwz
       password: 114514
+  http:
+    encoding:
+      force:
+        true
 
 mybatis:
   mapper-locations: classpath:Mapper/*.xml
@@ -19,9 +27,10 @@ mybatis:
 #showSql
 logging:
   level:
-    com:
-      example:
-        mapper : debug
+    com.studentdemo.ssystem.DAO : debug
+
+
+
 swagger:
   title: 学生管理系统
   description: 迫真项目，练手用
