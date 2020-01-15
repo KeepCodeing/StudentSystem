@@ -24,7 +24,7 @@ public class StudentInfoController {
     @ApiImplicitParam(paramType = "path", dataType = "Long", name = "id", value = "学生ID", required = true, example = "1")
     public StudentInfoPOJO getStudentInfoById( @PathVariable Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication);
+        // System.out.println(authentication);
         if (authentication != null) {
             System.out.println(authentication.getPrincipal());
         }
@@ -51,4 +51,5 @@ public class StudentInfoController {
     public void delStudentInfo(@PathVariable Long id) {
         studentInfo.delStudentInfo(id);
     }
+
 }

@@ -12,4 +12,10 @@
     <select id="getUserRoles" parameterType="String" resultType="String" >
         SELECT role FROM roles WHERE username = #{username}
     </select>
+    <insert id="initUserRole" parameterType="com.studentdemo.ssystem.POJO.UserRolePOJO">
+        INSERT INTO roles VALUES (#{roles}, #{username}, null)
+    </insert>
+    <update id="setUserRole" parameterType="com.studentdemo.ssystem.POJO.UserRolePOJO">
+        UPDATE roles SET role = #{roles} WHERE username = #{username}
+    </update>
 </mapper>

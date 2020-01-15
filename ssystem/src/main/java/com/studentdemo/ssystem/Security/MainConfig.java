@@ -29,6 +29,10 @@ public class MainConfig extends WebSecurityConfigurerAdapter {
     @Resource(name = "MyAuthenticationEntryPoint")
     private MyAuthenticationEntryPoint entryPoint;
 
+    // 自定义无权访问返回提示
+    @Resource(name = "MyAccessDeniedHandler")
+    private MyAccessDeniedHandler accessDeniedHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 使用自定义的用户校验方法处理登陆请求
@@ -41,13 +45,17 @@ public class MainConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/user/register", "/login").permitAll()
                 .antMatchers("/index", "/").permitAll()
-                .antMatchers("/static/css/**", "/static/js/**", "/static/html/**").permitAll()
-                .antMatchers("/api/**").hasAuthority("ADMIN");
+                .antMatchers("/static/**").permitAll()
+                .antMatchers("/api/**").hasAuthority("ADMIN")
+                // 设置不拦截swagger
+                .antMatchers("/swagger*/**").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/v2/**").permitAll();
 
         // 不允许访问其他api
         http.authorizeRequests().anyRequest().authenticated();
 
-        // 登陆方式
+        // 登陆方式（注意，这里的请求头要设置成表单请求头）
         http.formLogin()
                 .successHandler(successHandle)
                 .failureHandler(failHandle);
@@ -57,6 +65,9 @@ public class MainConfig extends WebSecurityConfigurerAdapter {
 
         // 未登录访问资源返回Json提示用户登陆
         http.exceptionHandling().authenticationEntryPoint(entryPoint);
+
+        // 无权访问返回提示
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 
         // 关闭跨站攻击防护，方便调试
         http.csrf().disable();
