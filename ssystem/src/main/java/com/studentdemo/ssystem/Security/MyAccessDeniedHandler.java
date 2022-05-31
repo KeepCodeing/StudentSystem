@@ -3,7 +3,6 @@ package com.studentdemo.ssystem.Security;
 import com.alibaba.fastjson.JSON;
 import com.studentdemo.ssystem.Enum.CodeEnum;
 import com.studentdemo.ssystem.tools.get_ret_code;
-import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;

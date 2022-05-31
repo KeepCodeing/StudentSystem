@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.studentdemo.ssystem.DAO.UserDAO">
+    <select id="userLogin" parameterType="String" resultType="com.studentdemo.ssystem.POJO.UserPOJO">
+        SELECT * FROM user WHERE username = #{username} or email = #{username}
+    </select>
+    <insert id="userRegister" parameterType="com.studentdemo.ssystem.POJO.UserPOJO">
+        INSERT INTO user VALUES (#{username}, #{password}, #{email}, null)
+    </insert>
+    <select id="countUserName" parameterType="com.studentdemo.ssystem.POJO.UserPOJO" resultType="com.studentdemo.ssystem.POJO.UserPOJO">
+        SELECT * FROM user WHERE username = #{username} or email = #{username}
+    </select>
+    <select id="getUserRoles" parameterType="String" resultType="String" >
+        SELECT role FROM roles WHERE username = #{username}
+    </select>
+    <insert id="initUserRole" parameterType="com.studentdemo.ssystem.POJO.UserRolePOJO">
+        INSERT INTO roles VALUES (#{roles}, #{username}, null)
+    </insert>
+    <update id="setUserRole" parameterType="com.studentdemo.ssystem.POJO.UserRolePOJO">
+        UPDATE roles SET role = #{roles} WHERE username = #{username}
+    </update>
+</mapper>
